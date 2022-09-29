@@ -1,9 +1,11 @@
 ﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NAPA.WebApp.Models;
 
 namespace NAPA.WebApp.Controllers;
 
+[Authorize(Roles = "admin")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

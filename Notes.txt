@@ -1,39 +1,42 @@
-Test topshirig'i 17/06/2022
-Old shartlar:
+﻿Old shartlar:
+
 Onlayn resurslardan foydalanishga ruxsat beriladi. Litsenziya qoidalari ruxsat bersa, ramka va kutubxonalardan foydalanishga ruxsat beriladi
+
 Tizimni ishlab chiqish texnologiyalari sizning tajribangiz asosida, lekin suhbat, tavsiyalar asosida erkin tanlanishi mumkin
 ASP.NET MVC da ishlab chiqish bo'lardi
+
 Dasturni ishlab chiqish vaqti - 4 soat (barcha talablarni bajara olmasligingiz mumkin, lekin birinchi o'ringa qo'yish va tugatish muhimdir.
 asosiy xususiyatlar!
 
 Funktsional talablar:
 
 "Foydalanuvchi nomi" va "Parol" maydonlari bilan kirish formasini yarating
-    a. Parametrlardan birortasi noto'g'ri bo'lsa, xato xabari bo'lishi kerak
-    b. Turli rollarga ega 2 ta foydalanuvchi bo'lishi kerak - admin, foydalanuvchi
-    c. Foydalanuvchilar ma'lumotlar bazasiga ro'yxatga olish funksiyasi yoki ma'lumotlar bazasini ekish skriptlari yordamida qo'shilishi mumkin
-    d. Agar foydalanuvchi haqiqiy foydalanuvchi nomi va parolni taqdim etgan bo'lsa, tizim 2-banddan ko'rinishga yo'naltirilishi kerak.
+
+a. Parametrlardan birortasi noto'g'ri bo'lsa, xato xabari bo'lishi kerak
+
+b. Turli rollarga ega 2 ta foydalanuvchi bo'lishi kerak - admin, foydalanuvchi
+
+c. Foydalanuvchilar ma'lumotlar bazasiga ro'yxatga olish funksiyasi yoki ma'lumotlar bazasini ekish skriptlari yordamida qo'shilishi mumkin
+
+d. Agar foydalanuvchi haqiqiy foydalanuvchi nomi va parolni taqdim etgan bo'lsa, tizim 2-banddan ko'rinishga yo'naltirilishi kerak.
 
 Mahsulot boshqaruvi:
-    a. "Mahsulot nomi", "Miqdor", "Narx" ustunlari va "mahsulot" ma'lumotlar bazasi jadvalidan yuklangan ma'lumotlarga ega HTML jadvali (3-bandga qarang)
-    b. "Administrator" roliga ega foydalanuvchi to'liq CRUD funksiyasiga ega bo'lishi kerak. Shakllardagi kiritish maydonlari tasdiqlanishi kerak.
-    c. "Foydalanuvchi" roliga ega foydalanuvchi faqat yozuvlarni ko'rishi kerak
-    d. "QQS bilan umumiy narx" qo'shimcha ustuni, u quyidagi formula bo'yicha hisoblab chiqiladi: (Buyum miqdori * Har bir ob'ekt narxi) * (1+QQS), bu erda
-QQS qiymati konfiguratsiya faylidan olinadi
-    e. 2.d nuqtasini hisoblaydigan usul uchun birlik testi yaratilishi kerak;
 
-Migratsiya skriptlari yordamida ma'lumotlar bazasida "mahsulot" deb nomlangan jadval yaratilishi kerak va ma'lumotlar ekish skriptlari yordamida kiritilishi kerak. Uchun
-misol:
-# nom miqdori narxi
-1 qattiq disk 1TB 55 74.09
-2 HDD SSD 512 GB 102 190,99
-3 operativ xotira DDR4 16 GB 47 80.32
-... ... ... ..
+a. "Mahsulot nomi", "Miqdor", "Narx" ustunlari va "mahsulot" ma'lumotlar bazasi jadvalidan yuklangan ma'lumotlarga ega HTML jadvali (3-bandga qarang)
 
+b. "Administrator" roliga ega foydalanuvchi to'liq CRUD funksiyasiga ega bo'lishi kerak. Shakllardagi kiritish maydonlari tasdiqlanishi kerak.
 
-Ma'lumotlar bazasi ma'lumotlar tarixini saqlashni talab qiladi, masalan, o'zgarishlar haqidagi ma'lumotlarni saqlaydigan "product_audit" jadvali - nima o'zgartirilgan
-qaysi foydalanuvchi tomonidan va ma'lumotlar qachon o'zgartirilgan.
-    a. Maʼlumotlar foydalanuvchi interfeysida mavjud boʻlishi shart emas, lekin “administrator” foydalanuvchi HTTP API (JSON) orqali ularni filtrlash imkoniyatiga ega boʻlishi kerak.
+c. "Foydalanuvchi" roliga ega foydalanuvchi faqat yozuvlarni ko'rishi kerak
+
+d. "QQS bilan umumiy narx" qo'shimcha ustuni, u quyidagi formula yordamida hisoblab chiqiladi: (Tovar summasi * Har bir ob'ekt narxi) * (1+QQS), bu erda QQS qiymati konfiguratsiya faylidan olinadi.
+
+e. 2.d nuqtasini hisoblaydigan usul uchun birlik testi yaratilishi kerak;
+
+Migratsiya skriptlari yordamida ma'lumotlar bazasida "mahsulot" deb nomlangan jadval yaratilishi kerak va ma'lumotlar ekish skriptlari yordamida kiritilishi kerak. Masalan:
+
+Ma'lumotlar bazasi ma'lumotlar tarixini saqlashni talab qiladi, masalan, o'zgarishlar haqidagi ma'lumotlarni saqlaydigan "product_audit" jadvali - qaysi foydalanuvchi tomonidan nima o'zgartirilganligi va ma'lumotlar qachon o'zgartirilganligi.
+
+a. Maʼlumotlar foydalanuvchi interfeysida mavjud boʻlishi shart emas, lekin “administrator” foydalanuvchi HTTP API (JSON) orqali ularni filtrlash imkoniyatiga ega boʻlishi kerak.
 maʼlumotlarni oʻzgartirish sanasiga asoslangan maʼlumotlar (masalan, belgilangan sana boʻyicha &from va &to GET parametrlari bilan)
 
 Manba kodi va joylashtirish bo'yicha yo'riqnoma (ya'ni, readme.md dasturini qanday joylashtirish va ishga tushirish kerak) umumiy kodlar omborida joylashtirilishi kerak,

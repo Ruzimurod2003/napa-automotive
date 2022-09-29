@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Identity;
- 
+
 namespace NAPA.Models
 {
-    public class User : IdentityUser
+    public class User : IdentityUser<int>
     {
-        public int Year { get; set; }
     }
 }

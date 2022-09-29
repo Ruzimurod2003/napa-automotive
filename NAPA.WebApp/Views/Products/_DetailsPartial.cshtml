@@ -1,0 +1,26 @@
+﻿@model Product;
+
+<div class="modal fade" id="details_modal_@Model.Id" tabindex="-1" aria-labelledby="details_modal_label_@Model.Id" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="details_modal_label_@Model.Id">@Model.Name</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><b>Nomi:</b> @Model.Name</p>
+                        <p><b>Miqdori:</b> @Model.Quantity</p>
+                        <p><b>Narxi:</b> @Model.Price</p>
+                        <p><b>QQS:</b> @Model.TotalPrice</p>
+                        <p><b>Yaratilgan vaqt:</b> @Model.CreatedDate</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Chiqish</button>
+            </div>
+        </div>
+    </div>
+</div>
