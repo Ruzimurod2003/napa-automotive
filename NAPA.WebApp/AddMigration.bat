@@ -1,1 +1,0 @@
-dotnet ef migrations add Initial -p ..\NAPA.Database\NAPA.Database.csproj

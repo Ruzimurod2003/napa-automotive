@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace NAPA.Controllers
 {
-   // [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     public class RolesController : Controller
     {
         RoleManager<Role> _roleManager;

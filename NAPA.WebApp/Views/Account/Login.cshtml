@@ -1,24 +1,24 @@
 ﻿@model LoginViewModel
 
 <h2>Login</h2>
-<form method="post" asp-controller="Account" asp-action="Login"
-      asp-route-returnUrl="@Model.ReturnUrl">
+<form method="post" asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Model.ReturnUrl">
     <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-    <div>
+    <div class="form-group">
         <label asp-for="Email"></label><br />
         <input asp-for="Email" />
         <span asp-validation-for="Email"></span>
     </div>
-    <div>
+    <div class="form-group">
         <label asp-for="Password"></label><br />
         <input asp-for="Password" />
         <span asp-validation-for="Password"></span>
     </div>
-    <div>
+    <div class="form-group">
         <label asp-for="RememberMe"></label><br />
         <input asp-for="RememberMe" />
     </div>
-    <div>
+    <div class="form-group">
+        <a class="text-primary" asp-action="Register" asp-controller="Account">Pass registration</a>
         <input type="submit" value="Enter" />
     </div>
 </form>

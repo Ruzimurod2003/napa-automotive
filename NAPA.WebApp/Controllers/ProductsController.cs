@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -66,6 +67,14 @@ namespace NAPA.WebApp.Controllers
                     CreatedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                 };
                 _context.Add(product);
+                int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                _context.ProductAudits.Add(new ProductAudit
+                {
+                    UserId = user_id,
+                    ProductId = product.Id,
+                    Type = "Create",
+                    AddedTime = DateTime.Now.ToString("dd.MM.yyy HH:mm")
+                });
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -122,6 +131,14 @@ namespace NAPA.WebApp.Controllers
                         TotalPrice = VAT.GetTotalPrice(price, quantity, vat)
                     };
                     _context.Update(product);
+                    int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                    _context.ProductAudits.Add(new ProductAudit
+                    {
+                        UserId = user_id,
+                        ProductId = product.Id,
+                        Type = "Edit",
+                        AddedTime = DateTime.Now.ToString("dd.MM.yyy HH:mm")
+                    });
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -153,6 +170,14 @@ namespace NAPA.WebApp.Controllers
             var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
+                int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+                _context.ProductAudits.Add(new ProductAudit
+                {
+                    UserId = user_id,
+                    ProductId = product.Id,
+                    Type = "Delete",
+                    AddedTime = DateTime.Now.ToString("dd.MM.yyy HH:mm")
+                });
                 _context.Products.Remove(product);
             }
 

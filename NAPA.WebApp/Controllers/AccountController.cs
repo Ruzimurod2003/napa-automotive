@@ -38,7 +38,8 @@ public class AccountController : Controller
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                await _userManager.AddToRoleAsync(user, "User");
+                context.UserRoles.Add(new UserRole { UserId = user.Id, RoleId = 2 });
+                context.SaveChanges();
                 return RedirectToAction("Index", "Products");
             }
             else
@@ -79,7 +80,7 @@ public class AccountController : Controller
             }
             else
             {
-                ModelState.AddModelError("", "Login yoki parol hato");
+                ModelState.AddModelError("", "The login or password is incorrect");
             }
         }
         return View(model);
