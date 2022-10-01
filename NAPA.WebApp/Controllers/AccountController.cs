@@ -28,6 +28,11 @@ public class AccountController : Controller
     {
         return View();
     }
+    [HttpGet]
+    public IActionResult AccessDenied(string? ReturnUrl)
+    {
+        return View();
+    }
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel model)
     {

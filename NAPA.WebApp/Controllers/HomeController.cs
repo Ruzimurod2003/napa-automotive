@@ -19,6 +19,10 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult RoleError()
+    {
+        return View();
+    }
 
     public IActionResult Privacy()
     {

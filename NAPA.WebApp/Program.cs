@@ -12,7 +12,12 @@ builder.Services.AddDbContext<ApplicationContext>();
 
 builder.Services.AddIdentity<User, Role>()
                 .AddEntityFrameworkStores<ApplicationContext>();
-
+builder.Services.AddAuthentication().AddCookie(options =>
+{
+    options.LoginPath = "Account/login";
+    options.LogoutPath = "Account/logout";
+    options.AccessDeniedPath = "Account/AccessDenied";
+});
 var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
@@ -28,7 +33,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.UseAuthentication();   
+app.UseAuthentication();
 
 app.UseAuthorization();
 

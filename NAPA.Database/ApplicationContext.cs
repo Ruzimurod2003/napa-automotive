@@ -9,7 +9,7 @@ namespace NAPA.Database
 {
     public class ApplicationContext : IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
-        readonly StreamWriter logStream = new StreamWriter("c:\\NAPA.txt", true);
+        //readonly StreamWriter logStream = new StreamWriter("c:\\NAPA.txt", true);
         public ApplicationContext(string connectionString) : base(GetOptions(connectionString))
         {
         }
@@ -53,7 +53,7 @@ namespace NAPA.Database
             });
             builder.Entity<ProductAudit>(b =>
             {
-                b.HasKey(t => new { t.UserId, t.ProductId });
+                b.HasKey(t => new { t.Id});
                 b.ToTable("product_audit");
             });
 
@@ -96,34 +96,22 @@ namespace NAPA.Database
                 new Role { Id = 2, Name = "User", NormalizedName = "User".ToUpper() }
             );
             var hasher = new PasswordHasher<User>();
-            builder.Entity<User>().HasData(new User
+            User user1 = new User
             {
                 Id = 1,
-                UserName = "admin",
-                NormalizedUserName = "admin",
-                Email = "ruzimurodabdunazarov2003@gmail.com",
-                NormalizedEmail = "ruzimurodabdunazarov2003@gmail.com",
-                EmailConfirmed = false,
-                PasswordHash = hasher.HashPassword(null, "P@r0l2003"),
-                SecurityStamp = string.Empty
-            });
-            builder.Entity<UserRole>().HasData
-            (
-                new UserRole { RoleId = 1, UserId = 1 }
-            );
-            builder.Entity<User>().HasData(new User
+                Email = "ruzimurodabdunazarov2003@gmail.com"
+            };
+            user1.PasswordHash = hasher.HashPassword(user1, "P@r0l2003");
+            User user2 = new User
             {
                 Id = 2,
-                UserName = "user",
-                NormalizedUserName = "user",
-                Email = "user2003@gmail.com",
-                NormalizedEmail = "user2003@gmail.com",
-                EmailConfirmed = false,
-                PasswordHash = hasher.HashPassword(null, "P@$$word"),
-                SecurityStamp = string.Empty
-            });
+                Email = "user@gmail.com"
+            };
+            user2.PasswordHash = hasher.HashPassword(user2, "P@$$word");
+            builder.Entity<User>().HasData(user1, user2);
             builder.Entity<UserRole>().HasData
             (
+                new UserRole { RoleId = 1, UserId = 1 },
                 new UserRole { RoleId = 2, UserId = 2 }
             );
             builder.Entity<Product>().HasData
@@ -156,17 +144,17 @@ namespace NAPA.Database
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.LogTo(logStream.WriteLine);
+            optionsBuilder.LogTo(Console.WriteLine);
         }
-        public override void Dispose()
-        {
-            base.Dispose();
-            logStream.Dispose();
-        }
-        public override async ValueTask DisposeAsync()
-        {
-            await base.DisposeAsync();
-            await logStream.DisposeAsync();
-        }
+        //public override void Dispose()
+        //{
+        //    base.Dispose();
+        //    logStream.Dispose();
+        //}
+        //public override async ValueTask DisposeAsync()
+        //{
+        //    await base.DisposeAsync();
+        //    await logStream.DisposeAsync();
+        //}
     }
 }

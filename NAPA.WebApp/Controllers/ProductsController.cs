@@ -67,6 +67,7 @@ namespace NAPA.WebApp.Controllers
                     CreatedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                 };
                 _context.Add(product);
+                await _context.SaveChangesAsync();
                 int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                 _context.ProductAudits.Add(new ProductAudit
                 {
@@ -131,6 +132,7 @@ namespace NAPA.WebApp.Controllers
                         TotalPrice = VAT.GetTotalPrice(price, quantity, vat)
                     };
                     _context.Update(product);
+                    await _context.SaveChangesAsync();
                     int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
                     _context.ProductAudits.Add(new ProductAudit
                     {
