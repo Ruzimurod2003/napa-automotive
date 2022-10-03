@@ -53,7 +53,7 @@ namespace NAPA.Database
             });
             builder.Entity<ProductAudit>(b =>
             {
-                b.HasKey(t => new { t.Id});
+                b.HasKey(t => new { t.Id });
                 b.ToTable("product_audit");
             });
 
@@ -95,25 +95,21 @@ namespace NAPA.Database
                 new Role { Id = 1, Name = "Admin", NormalizedName = "Admin".ToUpper() },
                 new Role { Id = 2, Name = "User", NormalizedName = "User".ToUpper() }
             );
+
             var hasher = new PasswordHasher<User>();
             User user1 = new User
             {
                 Id = 1,
-                Email = "ruzimurodabdunazarov2003@gmail.com"
+                Email = "test@gmail.com",
+                CreatedDate = DateTime.Now
             };
             user1.PasswordHash = hasher.HashPassword(user1, "P@r0l2003");
-            User user2 = new User
-            {
-                Id = 2,
-                Email = "user@gmail.com"
-            };
-            user2.PasswordHash = hasher.HashPassword(user2, "P@$$word");
-            builder.Entity<User>().HasData(user1, user2);
+            builder.Entity<User>().HasData(user1);
             builder.Entity<UserRole>().HasData
             (
-                new UserRole { RoleId = 1, UserId = 1 },
-                new UserRole { RoleId = 2, UserId = 2 }
+                new UserRole { RoleId = 1, UserId = 1 }
             );
+
             builder.Entity<Product>().HasData
             (
                 new Product

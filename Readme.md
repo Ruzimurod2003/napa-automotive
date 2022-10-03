@@ -2,6 +2,8 @@
 
 ### Demak bu proyekt o'zi nima qiladi va qanday ishlatiladi hozir shu haqida aytib o'taman
 
+**Birinchi ConnectionString ni to'g'irlang appsettings.json faylini ichidan**
+
 ## dotnet 7.0 ni https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/sdk-7.0.100-rc.1-windows-x86-installer shu yerdan olamiz.
 
 ## Keyin man buni bazasi sifatida Sqlite ishlatgandim uni https://download.sqlitebrowser.org/DB.Browser.for.SQLite-3.12.2-win64.msi shundan olamiz.
@@ -20,6 +22,10 @@ Ikkita rol bor
 *Administrator*
 - Email **shaxnoza@mail.ru**
 - Parol **Sh@xn0za2005**
+
+*Administrator*
+- Email **testadmin@mail.ru**
+- Parol **@dM1n2006**
 
 *Foydalanuvchi*
 - Email **ruzimurodabdunazarov2003@mail.ru**
@@ -47,3 +53,7 @@ Keyin administrator kirib o'zgartirsa bo'ladi.
 
 Test uchun o'ziz boshqa foydalanuvhci bo'lib kirib,
 Administrator orqali rolini oshirib uni ham administrator qila olasiz.
+
+Agar /user zaprosi bilan fromDate,toDate query lari ketsa bu shu vaqtlar orasida ro'yhatdan o'tgan userlarni Json shaklida qaytaradi.
+
+agar /product_audit zaprosi ketsa umumiy bazadagi o'zgarishlar Json formatida qaytib keladi.(Faqat administratorlar uchun)
