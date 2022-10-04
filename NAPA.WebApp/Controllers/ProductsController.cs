@@ -34,12 +34,13 @@ namespace NAPA.WebApp.Controllers
         }
         public void InitializeTotalPrice()
         {
-            var products = _context.Products.Where(i => i.TotalPrice == 0).ToList();
+            var products = _context.Products.ToList();
             double vat = double.Parse(configuration["VAT"]);
             foreach (var product in products)
             {
                 product.TotalPrice = VAT.GetTotalPrice(product.Price, product.Quantity, vat);
             }
+            _context.SaveChanges();
         }
         // GET: Products/Create
         [Authorize(Roles = "Admin")]
@@ -64,7 +65,7 @@ namespace NAPA.WebApp.Controllers
                     Price = price,
                     Quantity = quantity,
                     TotalPrice = VAT.GetTotalPrice(price, quantity, vat),
-                    CreatedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
+                    LastChangedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                 };
                 _context.Add(product);
                 await _context.SaveChangesAsync();
@@ -129,7 +130,8 @@ namespace NAPA.WebApp.Controllers
                         Name = viewModel.Name,
                         Price = price,
                         Quantity = viewModel.Quantity,
-                        TotalPrice = VAT.GetTotalPrice(price, quantity, vat)
+                        TotalPrice = VAT.GetTotalPrice(price, quantity, vat),
+                        LastChangedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                     };
                     _context.Update(product);
                     await _context.SaveChangesAsync();

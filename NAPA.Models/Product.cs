@@ -7,6 +7,6 @@ namespace NAPA.Models
         public int Quantity { get; set; }
         public double Price { get; set; }
         public double TotalPrice { get; set; }
-        public string CreatedDate { get; set; }
+        public string LastChangedDate { get; set; }
     }
 }

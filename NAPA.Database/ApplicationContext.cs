@@ -118,7 +118,7 @@ namespace NAPA.Database
                     Name = "HDD 1TB",
                     Quantity = 55,
                     Price = 74.09,
-                    CreatedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
+                    LastChangedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                 },
                 new Product
                 {
@@ -126,7 +126,7 @@ namespace NAPA.Database
                     Name = "HDD SSD 512GB",
                     Quantity = 102,
                     Price = 190.99,
-                    CreatedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
+                    LastChangedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                 },
                 new Product
                 {
@@ -134,7 +134,7 @@ namespace NAPA.Database
                     Name = "RAM DDR4 16GB",
                     Quantity = 47,
                     Price = 80.32,
-                    CreatedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
+                    LastChangedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                 }
             );
         }
