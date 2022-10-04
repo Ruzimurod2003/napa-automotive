@@ -1,0 +1,41 @@
+﻿@model List<User>;
+@using NAPA.Database;
+@inject ApplicationContext _context;
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                UserId
+            </th>
+            <th>
+                Email adress
+            </th>
+            <th>
+                Role
+            </th>
+            <th>
+                Created time
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Id
+                </td>
+                <td>
+                    @item.Email
+                </td>
+                <td>
+                    @_context.Roles.FirstOrDefault(i=>i.Id== _context.UserRoles.FirstOrDefault(i=>i.UserId==item.Id).RoleId)
+                </td>
+                <td>
+                    @item.CreatedDate.ToString("dd.MM.yyyy HH:mm")
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

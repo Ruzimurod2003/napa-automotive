@@ -68,16 +68,8 @@ namespace NAPA.WebApp.Controllers
                     LastChangedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                 };
                 _context.Add(product);
-                await _context.SaveChangesAsync();
                 int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                _context.ProductAudits.Add(new ProductAudit
-                {
-                    UserId = user_id,
-                    ProductId = product.Id,
-                    Type = "Create",
-                    AddedTime = DateTime.Now.ToString("dd.MM.yyy HH:mm")
-                });
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(user_id);
                 return RedirectToAction(nameof(Index));
             }
             return View(viewModel);
@@ -134,16 +126,8 @@ namespace NAPA.WebApp.Controllers
                         LastChangedDate = DateTime.Now.ToString("dd.MM.yyyy HH:mm")
                     };
                     _context.Update(product);
-                    await _context.SaveChangesAsync();
                     int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                    _context.ProductAudits.Add(new ProductAudit
-                    {
-                        UserId = user_id,
-                        ProductId = product.Id,
-                        Type = "Edit",
-                        AddedTime = DateTime.Now.ToString("dd.MM.yyy HH:mm")
-                    });
-                    await _context.SaveChangesAsync();
+                    await _context.SaveChangesAsync(user_id);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -174,18 +158,10 @@ namespace NAPA.WebApp.Controllers
             var product = await _context.Products.FindAsync(id);
             if (product != null)
             {
-                int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
-                _context.ProductAudits.Add(new ProductAudit
-                {
-                    UserId = user_id,
-                    ProductId = product.Id,
-                    Type = "Delete",
-                    AddedTime = DateTime.Now.ToString("dd.MM.yyy HH:mm")
-                });
                 _context.Products.Remove(product);
             }
-
-            await _context.SaveChangesAsync();
+            int user_id = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            await _context.SaveChangesAsync(user_id);
             return RedirectToAction(nameof(Index));
         }
 

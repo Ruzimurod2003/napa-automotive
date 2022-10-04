@@ -32,11 +32,14 @@ namespace NAPA.WebApp.Controllers
             List<User> result = context.Users.Where(i => i.CreatedDate >= dateFrom).Where(i => i.CreatedDate <= dateTo).ToList();
             return Ok(result);
         }
-
-        [HttpGet("product_audit")]
+        public IActionResult AboutUsers()
+        {
+            return View(context.Users.ToList());
+        }
         public IActionResult ProductAudit()
         {
-            return Ok(context.ProductAudits.ToList());
+            List<Audit> result = context.AuditLogs.ToList();
+            return View(result);
         }
     }
 }

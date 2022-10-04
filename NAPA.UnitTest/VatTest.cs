@@ -13,7 +13,9 @@ namespace NAPA.UnitTest
         private readonly ApplicationContext context;
         public VatTest()
         {
-            string connectionString = "Data Source=d:\\Ruzimurod\\for-github\\napa-automotive\\NAPA.db";
+            string projectPath = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent.Parent.Parent.FullName;
+            string databaseName = "NAPA.db";
+            string connectionString = "Data Source=" + Path.Combine(projectPath, databaseName);
             context = new ApplicationContext(connectionString);
         }
         [Fact]

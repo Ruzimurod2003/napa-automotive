@@ -71,3 +71,5 @@ Faqat connectionString ga etibor berib to'g'rlab qo'yish kerak.
 Hozir *d:\\Ruzimurod\\for-github\\napa-automotive\\NAPA.db* shunaqa turibdi.
 
 Lekin siz proyektni yuklasez o'sha yer joylashgan **Path** ni kiritasiz
+
+Layoutga Web Api , Roles , About users , Product audits , Log out lar bor
